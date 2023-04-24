@@ -1,0 +1,37 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+Klient korporacyjny - jako że współpracujesz z takimi partnerami jak Biedronka i SteelSeries, idealnym klientem dla Twojej firmy mogą być duże korporacje złożone z wielu oddziałów i działów. Firmy te często potrzebują oprogramowania, które pozwoli na sprawną komunikację i zarządzanie zadaniami wewnątrz organizacji.
+
+Zorientowany na biznes - klient, który ma jasno określone cele biznesowe, będzie idealny dla Twojej firmy. Klient taki będzie w stanie określić swoje potrzeby, co ułatwi Ci zaprojektowanie oprogramowania spełniającego jego wymagania i oczekiwania.
+
+Potrzebujący aplikacji webowych i desktopowych - Twoja firma specjalizuje się w tworzeniu aplikacji webowych i desktopowych, więc idealnym klientem będą firmy, które potrzebują takiego oprogramowania. Klient taki powinien mieć konkretne wymagania co do funkcjonalności oprogramowania, ale jednocześnie powinien być otwarty na sugestie i pomysły Twojego zespołu.
+
+Klient ceniący jakość - klient, który ceni jakość i wydajność oprogramowania, będzie idealnym klientem dla Twojej firmy. Będzie on oczekiwał oprogramowania o wysokiej jakości, które będzie działać sprawnie i będzie zgodne z jego potrzebami.
+
+Długoterminowa współpraca - idealnym klientem dla Twojej firmy będą firmy, które planują długoterminową współpracę. Dzięki temu będziecie mieli czas na poznanie potrzeb klienta i zaprojektowanie najlepszego rozwiązania dla niego.
+
+Czytelność - Czcionka Roboto jest zaprojektowana z myślą o czytelności na różnych urządzeniach, co jest szczególnie ważne dla aplikacji webowych i mobilnych. Jej prosty i czytelny styl pozwala na łatwe odczytanie tekstu na różnych ekranach.
+Nowoczesność - Roboto to czcionka o nowoczesnym stylu, która kojarzy się z innowacyjnością i postępem. Może to być odpowiedni wybór dla firmy, która chce pokazać swoją nowoczesność i zaangażowanie w innowacje.
