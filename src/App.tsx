@@ -1,17 +1,21 @@
 import './App.css'
+import { Box } from '@mui/material'
 import  {NavBar}  from './components/navbar'
 import MostPopular from './components/popular'
 
 
 function App() {
   return (
-    <div className='mainContainer'>
+    <Box sx={{
+      pl: '20px',
+      pr: '20px',
+    }}>
       <NavBar/>
-      <div>
+      <Box>
       <MostPopular/>
-      </div>
+      </Box>
 
-    </div>
+    </Box>
   )
 }
 
