@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { style } from './style.tsx'
 import Movie from "./movie";
-import { MovieInterface } from "./interfaces";
+import { MovieInterface } from "../config/interfaces.tsx";
 import { Box, IconButton } from "@mui/material";
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
