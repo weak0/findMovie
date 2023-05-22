@@ -4,7 +4,7 @@ const Search = () => {
 
   return (
     <Box>
-        <FormControl sx={{ width:'25vw', minWidth:'300px', padding:'20px'}}>
+        <FormControl sx={{ width:'50vw'}}>
         <TextField  label="Search..."   /> 
         </FormControl> 
 

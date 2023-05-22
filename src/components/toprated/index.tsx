@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { MovieInterface } from "../config/interfaces";
 import { options } from "../config/api";
+import TopMovie from "./topmovie";
+import { Typography } from "@mui/material";
 
 const TopRated = () => {
     const [movies, setMovies] = useState<MovieInterface[]>([]);
@@ -18,9 +20,8 @@ const TopRated = () => {
 
     return (
         <>
-            <h2>Top rated</h2>
-            {movies.map((movie) => (<div key={movie.id}>{movie.title}</div>))
-            }
+            <Typography variant='h2'>Top rated</Typography>
+            {movies.map((movie) => <TopMovie data={movie} key={movie.id}/>)}
 
         </>
     )

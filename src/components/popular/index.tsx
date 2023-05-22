@@ -1,8 +1,8 @@
 import { useEffect, useState, useRef } from "react";
 import { style } from './style.tsx'
-import Movie from "./movie";
+import Movie from "./popularMovie.tsx";
 import { MovieInterface } from "../config/interfaces.tsx";
-import { Box, IconButton } from "@mui/material";
+import { Box, IconButton, Typography } from "@mui/material";
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { SxProps } from "@mui/material/styles";
@@ -38,7 +38,7 @@ const MostPopular = () => {
 
     return (
         <>
-            <h2>Most Popular</h2>
+            <Typography variant='h2'>Top rated</Typography>
             <Box sx={style.mostPopularContainer}>
                 <IconButton sx={style.button} onClick={scrollLeft}><NavigateBeforeIcon sx={style.icon} /></IconButton>
                 <Box sx={style.mostPopularScroll} ref={scrollRef}>
