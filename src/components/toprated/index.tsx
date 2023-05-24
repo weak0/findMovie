@@ -24,8 +24,8 @@ const TopRated = () => {
             <Typography variant='h2'>Top rated</Typography>
             <Grid container spacing={2}>
                 {movies.slice(0, movies.length).map((movie, index) => 
-                <Grid item xs={12} lg={6}> 
-                <TopMovie data={movie} key={movie.id} rank={page*20-20 + index + 1} /> 
+                <Grid item xs={12} lg={6} key={movie.id}> 
+                <TopMovie data={movie} rank={page*20-20 + index + 1} /> 
                 </Grid>)}
             </Grid>
             <Box display='flex' justifyContent='center' gap='10px'>

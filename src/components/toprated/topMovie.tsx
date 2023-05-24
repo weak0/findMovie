@@ -12,7 +12,7 @@ const TopMovie = ({ data, rank }: { data: MovieInterface, rank: number }) => {
 
 
     const getDetails = async () => {
-        const response = await fetch(`https://api.themoviedb.org/3/movie/${data.id}?language=PL`, options);
+        const response = await fetch(`https://api.themoviedb.org/3/movie/${data.id}?language=ENG`, options);
         const movieDetails = await response.json();
         return movieDetails;
     }
@@ -50,7 +50,7 @@ const TopMovie = ({ data, rank }: { data: MovieInterface, rank: number }) => {
                 </Grid>
                 </Hidden>
                 <Grid item xs={12} sm={'auto'}>
-                    <img src={`https://image.tmdb.org/t/p/w185/${data.poster_path}`} style={{ height: '100%', width: '100%' }}></img>
+                    <img src={`https://image.tmdb.org/t/p/w185/${data.poster_path}`} style={{ height:'100%', width: '100%' }}></img>
                 </Grid>
                 <Grid item xs={12} sm={true} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', p: '1rem' }}>
                     <Box>
