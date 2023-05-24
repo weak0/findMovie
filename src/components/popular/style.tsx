@@ -8,6 +8,7 @@ import { SxProps } from "@mui/material"
     mostPopularScroll: {
         display: 'flex',
         overflowX: 'auto',
+        overflowY: 'hidden',
         scrollBehavior: 'smooth',
         "&::-webkit-scrollbar":{
             display: 'none',

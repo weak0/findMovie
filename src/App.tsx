@@ -1,8 +1,11 @@
-import { Box, ThemeProvider, CssBaseline } from '@mui/material'
+import { Box, ThemeProvider } from '@mui/material'
 import { NavBar } from './components/navbar'
 import MostPopular from './components/popular'
 import { createTheme, } from '@mui/material/styles';
+import { createBrowserRouter, RouterProvider} from 'react-router-dom'
+import Movie from './components/movie/index.tsx'
 import TopRated from './components/toprated';
+
 
 const theme = createTheme({
   palette: {
@@ -65,19 +68,30 @@ const theme = createTheme({
   }
 });
 
+const HomePage = () => {
+  return (
+    <div>
+      <MostPopular />
+      <TopRated />
+    </div>
+  )
+}
+
+const router = createBrowserRouter([
+  { path: '/', element: <HomePage /> },
+  { path: '/movie/:id', element: <Movie/> },
+])
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      {/* <CssBaseline /> */}
       <Box sx={{
         p: '20px',
         width: 'calc(100% - 40px)',
       }}>
-        <NavBar />
-        <MostPopular />
-        <TopRated />
-      </Box>
+        <NavBar />      
+        <RouterProvider router={router}/>
+        </Box>
     </ThemeProvider>
   )
 }

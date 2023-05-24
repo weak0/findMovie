@@ -27,18 +27,18 @@ const MostPopular = () => {
 
     const scrollRight = () => {
         if (scrollRef.current) {
-            scrollRef.current.scrollLeft += 500;
+            scrollRef.current.scrollLeft += scrollRef.current.offsetWidth;
         }
     }
     const scrollLeft = () => {
         if (scrollRef.current) {
-            scrollRef.current.scrollLeft -= 500;
+            scrollRef.current.scrollLeft -= scrollRef.current.offsetWidth;
         }
     }
 
     return (
         <>
-            <Typography variant='h2'>Top rated</Typography>
+            <Typography variant='h2'>Most Popular</Typography>
             <Box sx={style.mostPopularContainer}>
                 <IconButton sx={style.button} onClick={scrollLeft}><NavigateBeforeIcon sx={style.icon} /></IconButton>
                 <Box sx={style.mostPopularScroll} ref={scrollRef}>
