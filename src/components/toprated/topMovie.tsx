@@ -61,10 +61,10 @@ const TopMovie = ({ data, rank }: { data: MovieInterface, rank: number }) => {
                         <Typography>{movieDetails.overview.split(" ").slice(0, 30).join(" ") + "..."}</Typography>
 
                         <Typography>Generes: {movieDetails.genres.map((genre: { id: number; name: 'string' }) => genre.name + " ")}</Typography>
-                        <Typography> Providers:</Typography>
+                       { providers && providers.flatrate && <Typography> Providers:</Typography>}
                         <Box sx={{ display: 'flex', justifyContent: 'space-around', mt: '10px' }}>
                             {providers && providers.flatrate ? (providers.flatrate.map((provider: { logo_path: string, provider_id: number, provider_name: 'string', display_priority: number }) =>
-                                <img src={`https://image.tmdb.org/t/p/w92/${provider.logo_path}`} style={{ width: '50px', borderRadius: '50%', border: '1px solid #555' }} key={provider.provider_id}></img>)) : <Typography>Brak</Typography>}
+                                <img src={`https://image.tmdb.org/t/p/w92/${provider.logo_path}`} style={{ width: '50px', borderRadius: '50%', border: '1px solid #555' }} key={provider.provider_id}></img>)) : null}
                         </Box>
                     </Box>
                 </Grid>
