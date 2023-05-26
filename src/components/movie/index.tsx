@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react'
-import { Box, Typography, Container, Grid, Paper } from '@mui/material'
+import { Box, Typography, Container, Grid} from '@mui/material'
 import { MovieCreditsInterface, MovieDetailsInterface, MovieImagesInterface, MovieReviewsInterface } from '../config/interfaces'
 import { options } from '../config/api'
 import { useParams } from 'react-router-dom'
-import VideoPlayer from '../config/youtube';
 
 const Movie = ({ }) => {
   const { id } = useParams<{ id: string }>()
