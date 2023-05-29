@@ -31,6 +31,10 @@ const Credits = () => {
     }, [id]);
 
 
+    if (!credits) {
+        return <div>Loading...</div>;
+    }
+    
 
   return (
     <Box sx={{display: 'flex',  flexWrap:'wrap', justifyContent:'space-between'}} >

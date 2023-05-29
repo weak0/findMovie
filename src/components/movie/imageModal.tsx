@@ -39,6 +39,11 @@ const ImageModal = ({ images, number, modalClose }: { images: MovieImagesInterfa
     };
   }, []);
 
+  if (!images) {
+    return <div>Loading...</div>;
+  }
+  
+
   return (
   <>
     <Backdrop open={true} sx={{ zIndex: 1 }} onClick={(event) => handleBackdropClick(event as React.MouseEvent<HTMLDivElement>)} ref={backdropRef}>
