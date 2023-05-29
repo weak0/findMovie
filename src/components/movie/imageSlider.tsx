@@ -1,5 +1,5 @@
-import { useState, useEffect, useLayoutEffect, useRef} from 'react';
-import { Box, IconButton, Backdrop } from '@mui/material';
+import { useState, useEffect, useRef} from 'react';
+import { Box, IconButton} from '@mui/material';
 import { options } from '../config/api';
 import { MovieImagesInterface } from '../config/interfaces';
 import { style } from '../popular/style';
@@ -13,7 +13,7 @@ const ImageSlider = ({ id }: { id: string | undefined }) => {
 
   const [images, setImages] = useState<MovieImagesInterface[]>();
   const [modalIsActive, setModalIsActive] = useState<boolean>(false);
-  const [modalImage, setModalImage] = useState<string>('');
+  const [modalImage, setModalImage] = useState<number>(0);
 
   const getImages = async () => {
     try {
@@ -39,8 +39,8 @@ const scrollLeft = () => {
     }
 }
 
-const handleImageClick = (image: string) => {
-  setModalImage(image);
+const handleImageClick = (imageInd: number) => {
+  setModalImage(imageInd);
   setModalIsActive(true);
 }
 
@@ -64,8 +64,8 @@ const handleModalClose = () => {
             <NavigateBeforeIcon sx={style.icon} />
             </IconButton>
             <Box sx={style.mostPopularScroll} ref={scrollRef}>
-          {images.map((image) => (
-            <Box sx={{cursor:'pointer'}} key={image.file_path} onClick={() => handleImageClick(image.file_path) }>
+          {images.map((image, index) => (
+            <Box sx={{cursor:'pointer'}} key={image.file_path} onClick={() => handleImageClick(index) }>
             <img
               src={`https://image.tmdb.org/t/p/w300/${image.file_path}`}
             >
@@ -76,7 +76,7 @@ const handleModalClose = () => {
             <IconButton sx={[style.button, style.buttonRight] as SxProps} onClick={scrollRight}><ChevronRightIcon sx={style.icon} /></IconButton>
         </Box> 
       </Box>
-     { modalIsActive && <ImageModal path={modalImage} modalClose={handleModalClose} />}
+     { modalIsActive && <ImageModal images={images} number={modalImage} modalClose={handleModalClose} />}
     </>
   );
 };

@@ -1,16 +1,17 @@
 import { useEffect, useState } from 'react';
 import { Box, Typography, Container, Grid } from '@mui/material';
-import { MovieCreditsInterface, MovieDetailsInterface, MovieReviewsInterface } from '../config/interfaces';
+import { MovieDetailsInterface} from '../config/interfaces';
 import { options } from '../config/api';
 import { useParams } from 'react-router-dom';
 import ImageSlider from './imageSlider';
+import Reviews from './reviews';
+import Credits from './credits';
+import VideoPlayer from '../config/youtube';
 
 const Movie = () => {
   const { id } = useParams<{ id: string }>();
   const [movie, setMovie] = useState<MovieDetailsInterface>();
   const [video, setVideo] = useState<string>('');
-  const [reviews, setReviews] = useState<MovieReviewsInterface[]>([]);
-  const [credits, setCredits] = useState<MovieCreditsInterface[]>([]);
   const [providers, setProviders] = useState<any[]>([]);
 
   const getMovie = async () => {
@@ -20,7 +21,6 @@ const Movie = () => {
       setMovie(data);
     } catch (error) {
       console.error(error);
-      // Display an error message to the user
     }
   };
 
@@ -31,29 +31,6 @@ const Movie = () => {
       setVideo(data.results[0]?.key);
     } catch (error) {
       console.error(error);
-      // Display an error message to the user
-    }
-  };
-
-  const getReviews = async () => {
-    try {
-      const response = await fetch(`https://api.themoviedb.org/3/movie/${id}/reviews?language=ENG`, options);
-      const data = await response.json();
-      setReviews(data.results);
-    } catch (error) {
-      console.error(error);
-      // Display an error message to the user
-    }
-  };
-
-  const getCredits = async () => {
-    try {
-      const response = await fetch(`https://api.themoviedb.org/3/movie/${id}/credits?language=ENG`, options);
-      const data = await response.json();
-      setCredits(data.cast);
-    } catch (error) {
-      console.error(error);
-      // Display an error message to the user
     }
   };
 
@@ -64,19 +41,16 @@ const Movie = () => {
       setProviders(providers.results.PL.flatrate);
     } catch (error) {
       console.error(error);
-      // Display an error message to the user
     }
   };
 
   useEffect(() => {
     getMovie();
     getVideo();
-    getReviews();
-    getCredits();
     getProviders();
   }, [id]);
 
-  if (!movie || !video || !reviews || !credits || !movie.genres || !movie.production_companies || !providers) {
+  if (!movie || !video || !movie.genres || !movie.production_companies || !providers) {
     return null;
   }
 
@@ -122,22 +96,12 @@ const Movie = () => {
 
       <Typography variant='h3'>Images</Typography>
       <ImageSlider id={id} />
-      <Typography variant='h3'>Reviews</Typography>
-      <Box display='flex' flexWrap='wrap'>
-        {reviews.map((review) => (
-          <Typography key={review.id}>{review.content}</Typography>
-        ))}
-      </Box>
-      <Typography variant='h3'>Credits</Typography>
-      <Box display='flex' flexWrap='wrap'>
-        {credits.map((credit) => (
-          <Typography key={credit.id}>
-            {credit.name}: {credit.character}
-          </Typography>
-        ))}
-      </Box>
+      <Typography  variant='h3'>Credits</Typography>
+      <Credits/>
       <Typography variant='h3'>Video</Typography>
-      {/* <VideoPlayer videoId={video} /> */}
+      <VideoPlayer videoId={video} />
+      <Typography variant='h3'>Reviews</Typography>
+       <Reviews/>
     </Container>
   );
 };
