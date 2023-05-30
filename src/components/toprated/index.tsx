@@ -19,6 +19,10 @@ const TopRated = () => {
         getMovies();
     }, [page])
 
+    if (!movies) {
+        return <div>Loading...</div>;
+    }
+
     return (
         <>
             <Typography variant='h2'>Top rated</Typography>

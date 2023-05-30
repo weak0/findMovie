@@ -86,3 +86,10 @@ export interface MovieReviewsInterface {
 export interface MovieProps {
   data: MovieInterface;
 }
+
+export interface MovieProviderInterface {
+display_priority: number, 
+logo_path: string,
+provider_id: number,
+provider_name: string;
+}

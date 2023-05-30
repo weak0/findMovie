@@ -36,6 +36,10 @@ const MostPopular = () => {
         }
     }
 
+    if (!movies) {
+        return <div>Loading...</div>;
+    }
+
     return (
         <>
             <Typography variant='h2'>Most Popular</Typography>

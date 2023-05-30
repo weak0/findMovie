@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Box, Typography, Container, Grid } from '@mui/material';
-import { MovieDetailsInterface} from '../config/interfaces';
+import { MovieDetailsInterface, MovieProviderInterface } from '../config/interfaces';
 import { options } from '../config/api';
 import { useParams } from 'react-router-dom';
 import ImageSlider from './imageSlider';
@@ -12,7 +12,7 @@ const Movie = () => {
   const { id } = useParams<{ id: string }>();
   const [movie, setMovie] = useState<MovieDetailsInterface>();
   const [video, setVideo] = useState<string>('');
-  const [providers, setProviders] = useState<any[]>([]);
+  const [providers, setProviders] = useState<MovieProviderInterface[]>([]);
 
   const getMovie = async () => {
     try {
@@ -28,7 +28,9 @@ const Movie = () => {
     try {
       const response = await fetch(`https://api.themoviedb.org/3/movie/${id}/videos?language=ENG`, options);
       const data = await response.json();
-      setVideo(data.results[0]?.key);
+      if (data.results[0]?.key) {
+        setVideo(data.results[0]?.key);
+      }
     } catch (error) {
       console.error(error);
     }
@@ -38,7 +40,11 @@ const Movie = () => {
     try {
       const response = await fetch(`https://api.themoviedb.org/3/movie/${id}/watch/providers`, options);
       const providers = await response.json();
-      setProviders(providers.results.PL.flatrate);
+      if (providers.results.PL && providers.results.PL.flatrate) {
+        setProviders(providers.results.PL.flatrate);
+      } else {
+        setProviders([]);
+      }
     } catch (error) {
       console.error(error);
     }
@@ -50,8 +56,8 @@ const Movie = () => {
     getProviders();
   }, [id]);
 
-  if (!movie || !video || !movie.genres || !movie.production_companies || !providers) {
-    return null;
+  if (!movie) {
+    return <div>Loading...</div>;
   }
 
   return (
@@ -75,13 +81,13 @@ const Movie = () => {
             {providers && (
               <Box sx={{ display: 'flex', mb: '1rem,', p: '1rem', flexWrap: 'wrap' }}>
                 <Typography variant='h4'>Providers: </Typography>
-                {providers.map((provider: { logo_path?: string, provider_id: number, provider_name: 'string', display_priority: number }) => (
+                {providers && (providers.map((provider) => (
                   <Box key={provider.provider_id}>
                     {provider.logo_path && (
                       <img src={`https://image.tmdb.org/t/p/w92/${provider.logo_path}`} style={{ border: '1px solid #555', marginLeft: '10px', borderRadius: '50%', height: '60px' }} key={provider.logo_path}></img>
                     )}
                   </Box>
-                ))}
+                )))}
               </Box>
             )}
           </Grid>
@@ -96,12 +102,12 @@ const Movie = () => {
 
       <Typography variant='h3'>Images</Typography>
       <ImageSlider id={id} />
-      <Typography  variant='h3'>Credits</Typography>
-      <Credits/>
+      <Typography variant='h3'>Credits</Typography>
+      <Credits />
       <Typography variant='h3'>Video</Typography>
-      <VideoPlayer videoId={video} />
+      {video && <VideoPlayer videoId={video} />}
       <Typography variant='h3'>Reviews</Typography>
-       <Reviews/>
+      <Reviews />
     </Container>
   );
 };
