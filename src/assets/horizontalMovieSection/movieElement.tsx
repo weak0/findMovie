@@ -1,5 +1,4 @@
-import React from 'react'
-import { MovieInterface, MovieProps } from '../../components/config/interfaces'
+import { MovieInterface} from '../../components/config/interfaces'
 import { Box, Typography } from '@mui/material'
 import { Link } from 'react-router-dom'
 
