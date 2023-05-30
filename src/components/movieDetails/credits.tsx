@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { MovieCreditsInterface } from "../config/interfaces";
 import { options } from "../config/api";
 import { Box, Typography, Button } from "@mui/material";
-import imgUrl from '../images/unknown.jpg'
+import imgUrl from '../../assets/images/unknown.jpg'
 
 const Credits = () => {
 
@@ -63,10 +63,10 @@ const Credits = () => {
             </Box>
             {credits.length > 15 && (
                 <>
-                <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between' }}>
-                    {!showMore ? (
-                        <Button variant="outlined" onClick={() => setShowMore(true)}> Show More </Button>
-                    ) : (credits.slice(15).map((credit) => (
+                    <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between' }}>
+                        {!showMore ? (
+                            <Button variant="outlined" onClick={() => setShowMore(true)}> Show More </Button>
+                        ) : (credits.slice(15).map((credit) => (
                             <Box
                                 key={credit.id}
                                 sx={{
@@ -97,9 +97,9 @@ const Credits = () => {
                             </Box>
                         ))
                         )}
-                </Box>
-            { showMore && <Button variant="outlined" onClick={() => setShowMore(false)}>Hide</Button>}
-            </>
+                    </Box>
+                    {showMore && <Button variant="outlined" onClick={() => setShowMore(false)}>Hide</Button>}
+                </>
             )}
 
         </>

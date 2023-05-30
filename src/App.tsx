@@ -5,7 +5,6 @@ import { createTheme, } from '@mui/material/styles';
 import { createBrowserRouter, RouterProvider} from 'react-router-dom'
 import Movie from './components/movieDetails/index.tsx'
 import TopRated from './components/toprated';
-import NowPlaying from './components/nowPlaying/index.tsx';
 import Upcoming from './components/upcoming/index.tsx';
 import SearchMovie from './components/searchMovie/index.tsx';
 
