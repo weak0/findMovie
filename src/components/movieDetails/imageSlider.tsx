@@ -1,8 +1,8 @@
-import { useState, useEffect, useRef} from 'react';
-import { Box, IconButton} from '@mui/material';
+import { useState, useEffect, useRef } from 'react';
+import { Box, IconButton } from '@mui/material';
 import { options } from '../config/api';
 import { MovieImagesInterface } from '../config/interfaces';
-import { style } from '../popular/style';
+import { style } from '../../assets/horizontalMovieSection/style';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { SxProps } from '@mui/material/styles';
@@ -30,23 +30,23 @@ const ImageSlider = ({ id }: { id: string | undefined }) => {
 
   const scrollRight = () => {
     if (scrollRef.current) {
-        scrollRef.current.scrollLeft += scrollRef.current.offsetWidth;
+      scrollRef.current.scrollLeft += scrollRef.current.offsetWidth;
     }
-}
-const scrollLeft = () => {
+  }
+  const scrollLeft = () => {
     if (scrollRef.current) {
-        scrollRef.current.scrollLeft -= scrollRef.current.offsetWidth;
+      scrollRef.current.scrollLeft -= scrollRef.current.offsetWidth;
     }
-}
+  }
 
-const handleImageClick = (imageInd: number) => {
-  setModalImage(imageInd);
-  setModalIsActive(true);
-}
+  const handleImageClick = (imageInd: number) => {
+    setModalImage(imageInd);
+    setModalIsActive(true);
+  }
 
-const handleModalClose = () => {
-  setModalIsActive(false); 
-}
+  const handleModalClose = () => {
+    setModalIsActive(false);
+  }
 
   useEffect(() => {
     getImages();
@@ -62,21 +62,21 @@ const handleModalClose = () => {
         <Box sx={style.mostPopularContainer}>
           <IconButton sx={style.button} onClick={scrollLeft}>
             <NavigateBeforeIcon sx={style.icon} />
-            </IconButton>
-            <Box sx={style.mostPopularScroll} ref={scrollRef}>
-          {images.map((image, index) => (
-            <Box sx={{cursor:'pointer'}} key={image.file_path} onClick={() => handleImageClick(index) }>
-            <img
-              src={`https://image.tmdb.org/t/p/w300/${image.file_path}`}
-            >
-            </img>
-            </Box>
+          </IconButton>
+          <Box sx={style.mostPopularScroll} ref={scrollRef}>
+            {images.map((image, index) => (
+              <Box sx={{ cursor: 'pointer' }} key={image.file_path} onClick={() => handleImageClick(index)}>
+                <img
+                  src={`https://image.tmdb.org/t/p/w300/${image.file_path}`}
+                >
+                </img>
+              </Box>
             ))}
-            </Box>
-            <IconButton sx={[style.button, style.buttonRight] as SxProps} onClick={scrollRight}><ChevronRightIcon sx={style.icon} /></IconButton>
-        </Box> 
+          </Box>
+          <IconButton sx={[style.button, style.buttonRight] as SxProps} onClick={scrollRight}><ChevronRightIcon sx={style.icon} /></IconButton>
+        </Box>
       </Box>
-     { modalIsActive && <ImageModal images={images} number={modalImage} modalClose={handleModalClose} />}
+      {modalIsActive && <ImageModal images={images} number={modalImage} modalClose={handleModalClose} />}
     </>
   );
 };

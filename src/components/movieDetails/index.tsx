@@ -7,6 +7,8 @@ import ImageSlider from './imageSlider';
 import Reviews from './reviews';
 import Credits from './credits';
 import VideoPlayer from '../config/youtube';
+import { NavBar } from '../navbar';
+import SimilarMovies from './similarMovies';
 
 const Movie = () => {
   const { id } = useParams<{ id: string }>();
@@ -61,6 +63,8 @@ const Movie = () => {
   }
 
   return (
+    <>
+    <NavBar />
     <Container sx={{ mt: '1rem' }}>
       <Grid container sx={{ border: '1px solid #555', borderRadius: { xs: '15px' }, overflow: 'hidden', boxShadow: '0px 0px 10px 2px black' }}>
         <Grid item xs={12} sm={5} md={3} sx={{ display: { xs: 'flex', sm: 'block' }, justifyContent: 'center', bgcolor: 'rgba(0,0,0, 0.5)', pt: { xs: '1rem', sm: 0 } }}>
@@ -85,7 +89,7 @@ const Movie = () => {
                   <Box key={provider.provider_id}>
                     {provider.logo_path && (
                       <img src={`https://image.tmdb.org/t/p/w92/${provider.logo_path}`} style={{ border: '1px solid #555', marginLeft: '10px', borderRadius: '50%', height: '60px' }} key={provider.logo_path}></img>
-                    )}
+                      )}
                   </Box>
                 )))}
               </Box>
@@ -99,16 +103,18 @@ const Movie = () => {
           </Grid>
         </Grid>
       </Grid>
-
       <Typography variant='h3'>Images</Typography>
       <ImageSlider id={id} />
       <Typography variant='h3'>Credits</Typography>
       <Credits />
+      <Typography variant='h3'>Similar movies</Typography>
+      <SimilarMovies />
       <Typography variant='h3'>Video</Typography>
       {video && <VideoPlayer videoId={video} />}
       <Typography variant='h3'>Reviews</Typography>
       <Reviews />
     </Container>
+   </>
   );
 };
 

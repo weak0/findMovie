@@ -3,18 +3,22 @@ import { NavBar } from './components/navbar'
 import MostPopular from './components/popular'
 import { createTheme, } from '@mui/material/styles';
 import { createBrowserRouter, RouterProvider} from 'react-router-dom'
-import Movie from './components/movie/index.tsx'
+import Movie from './components/movieDetails/index.tsx'
 import TopRated from './components/toprated';
+import NowPlaying from './components/nowPlaying/index.tsx';
+import Upcoming from './components/upcoming/index.tsx';
+import SearchMovie from './components/searchMovie/index.tsx';
 
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#fff',
+      main: '#EFCA3C',
     },
     secondary: {
       main: '#ABABA7',
     },
+
   },
   components: {
     MuiTextField: {
@@ -78,8 +82,10 @@ const theme = createTheme({
 const HomePage = () => {
   return (
     <div>
+      <NavBar />
       <MostPopular />
       <TopRated />
+      <Upcoming />
     </div>
   )
 }
@@ -87,6 +93,7 @@ const HomePage = () => {
 const router = createBrowserRouter([
   { path: '/', element: <HomePage /> },
   { path: '/movie/:id', element: <Movie/> },
+  { path: 'search/:query', element: <SearchMovie/> },
 ])
 
 function App() {
@@ -94,8 +101,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <Box sx={{
         p: {xs: '1rem' ,sm:'2rem'},
-      }}>
-        <NavBar />      
+      }}>    
         <RouterProvider router={router}/>
         </Box>
     </ThemeProvider>

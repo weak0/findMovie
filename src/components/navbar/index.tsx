@@ -1,12 +1,14 @@
 import {Box, Typography} from '@mui/material'
 import Search from './search'
+import { Link } from 'react-router-dom'
 
 export const NavBar = () => {
+  
   return (
     <Box sx={{display:'flex', alignItems:'center', justifyContent:'space-between', flexWrap:'wrap'}}>
-    <Typography variant='h1' sx={{flexGrow: {xs:1 , sm: 0}, textAlign:'center'}}>
+    <Link to='/'><Typography variant='h1' sx={{flexGrow: {xs:1 , sm: 0}, textAlign:'center'}} color={'white'}>
        Find Movie
-       </Typography>
+       </Typography></Link>
     <Search/>
     </Box>
   )
