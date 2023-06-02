@@ -4,8 +4,11 @@ import { Link } from 'react-router-dom'
 
 
 const MovieElement = ({ data }: { data: MovieInterface }) => {
+
+  if (data.poster_path === null) return (<></>)
+
   return (
-    <Link to={`/movie/${data.id}`} style={{ textDecoration: 'none', color: 'white' }}>
+     <Link to={`/movie/${data.id}`} style={{ textDecoration: 'none', color: 'white' }}>
       <img src={`https://image.tmdb.org/t/p/w200/${data.poster_path}`} style={{ height: '300px' }}></img>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', ml: '5px', mr: '5px', mt: '-50px' }}>
         <Box sx={{ bgcolor: 'rgba(0,0,0,0.7)', padding: '10px', borderRadius: '15px', border: '1px solid white' }}>
@@ -16,6 +19,7 @@ const MovieElement = ({ data }: { data: MovieInterface }) => {
         </Box>
       </Box>
     </Link>
+
   );
 
 }
