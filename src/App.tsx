@@ -7,6 +7,7 @@ import Movie from './components/movieDetails/index.tsx'
 import TopRated from './components/toprated';
 import Upcoming from './components/upcoming/index.tsx';
 import SearchMovie from './components/searchMovie/index.tsx';
+import PerfectMatch from './components/perfectMatch/index.tsx';
 
 
 const theme = createTheme({
@@ -92,7 +93,8 @@ const HomePage = () => {
 const router = createBrowserRouter([
   { path: '/', element: <HomePage /> },
   { path: '/movie/:id', element: <Movie/> },
-  { path: 'search/:query', element: <SearchMovie/> },
+  { path: '/search/:query', element: <SearchMovie/> },
+  { path: '/perfectMatch', element: <PerfectMatch/> },
 ])
 
 function App() {

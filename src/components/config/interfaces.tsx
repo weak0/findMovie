@@ -93,3 +93,9 @@ logo_path: string,
 provider_id: number,
 provider_name: string;
 }
+
+export interface MovieCuntryInterface {
+  iso_3166_1: string;
+  english_name: string;
+  native_name: string;
+}

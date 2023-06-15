@@ -9,7 +9,7 @@ export const NavBar = () => {
     <Link to='/'><Typography variant='h1' sx={{flexGrow: {xs:1 , sm: 0}, textAlign:'center'}} color={'white'}>
        Find Movie
        </Typography></Link>
-       <Link to='/'><Typography variant='h2' sx={{flexGrow: {xs:1 , sm: 0}, textAlign:'center'}} color={'white'}>
+       <Link to='/perfectMatch'><Typography variant='h2' sx={{flexGrow: {xs:1 , sm: 0}, textAlign:'center'}} color={'white'}>
        Perfect Match
        </Typography></Link>
        
