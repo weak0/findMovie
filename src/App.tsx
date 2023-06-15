@@ -75,9 +75,33 @@ const theme = createTheme({
         fontWeight: '600',
         padding: '0.5rem 0 '},
       },
+    },
+    MuiSlider: {
+      styleOverrides: {
+        marked:{
+          color: '#yellow',
+        },
+        thumb: {
+          width: '1rem',
+          height: '1rem',
+          boxShadow: '0px 0px 2px 1px #EFCA3C',
+    },
+      mark: {
+        width: '1rem',
+        height: '1rem',
+        borderRadius: '50%',
+        opacity: 0.5,
+      },
+      markActive: {
+        opacity: 0,
+      },
+        markLabel: {
+          color: '#fff',
+        },
     }
-  }
-});
+  },
+},
+})
 
 const HomePage = () => {
   return (
