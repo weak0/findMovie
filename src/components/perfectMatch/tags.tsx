@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import {
   Box,
   Checkbox,
@@ -7,9 +7,22 @@ import {
   Button,
 } from "@mui/material";
 import { keywords } from "../config/keywords";
+import { matchContext } from "../store/PerfectMatchContext";
 
 const Tags = () => {
+  const matchCtx = useContext(matchContext);
   const [isActivated, setIsActivated] = useState<boolean>(true);
+
+  const keywordsHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedKeyword = e.target.value;
+    if (e.target.checked) {
+      matchCtx.setTagsHandler(selectedKeyword);
+    }
+    else {
+      matchCtx.removeTagsHandler(selectedKeyword);
+    }
+  }
+
 
   return (
     <Box sx={{ position:'relative' }}>
@@ -47,7 +60,10 @@ const Tags = () => {
           return (
             <FormControlLabel
               key={keyword}
-              control={<Checkbox value={keyword} />}
+              control={<Checkbox value={keyword} 
+              checked={matchCtx.tags.includes(keyword)}
+              onChange={(e) => keywordsHandler(e)}
+              />}
               label={keyword}
             />
           );

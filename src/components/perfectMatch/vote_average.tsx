@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Slider, Box, Button } from "@mui/material";
+import { matchContext } from "../store/PerfectMatchContext";
 
 const VateAvg = () => {
-  const [value, setValue] = useState<number[]>([0, 10]);
+  const matchCtx = useContext(matchContext);
   const [isActivated, setIsActivated] = useState<boolean>(true);
 
   return (
@@ -30,13 +31,13 @@ const VateAvg = () => {
         >
           <Slider
             sx={{ width: "150px", mt: "1rem" }}
-            value={value}
+            value={matchCtx.voteAverage}
             valueLabelDisplay="auto"
             size="medium"
             step={0.1}
             min={0}
             max={10}
-            onChange={(event, newValue) => setValue(newValue as number[])}
+            onChange={(event, newValue) => matchCtx.setVoteAverageHandler(newValue as number[])}
             marks={[
               { value: 0, label: "0" },
               { value: 10, label: "10" },

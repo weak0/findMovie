@@ -13,12 +13,12 @@ export const matchContext = createContext({
   setGenresHandler: (value: string) => {},
   removeGenresHandler: (value: string) => {},
   relaseYear: [] as number[],
-  setRelaseYearHandler: (from: number, to: number) => {},
+  setRelaseYearHandler: (value : number[]) => {},
   tags: [] as string[],
   setTagsHandler: (value: string) => {},
   removeTagsHandler: (value: string) => {},
   voteAverage: [] as number[],
-  setVoteAverageHandler: (from: number, to: number) => {},
+  setVoteAverageHandler: (value: number[]) => {},
 });
 
 import { FC, ReactNode } from "react";
@@ -28,7 +28,7 @@ const MatchContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [sortby, setSortBy] = useState("popularity.desc");
   const [countrys, setCountry] = useState<string[]>([]);
   const [genres, setGenres] = useState<string[]>([]);
-  const [relaseYear, setRelaseYear] = useState<number[]>([]);
+  const [relaseYear, setRelaseYear] = useState<number[]>([1950,2023]);
   const [tags, setTags] = useState<string[]>([]);
   const [voteAverage, setVoteAverage] = useState<number[]>([0, 10]);
 
@@ -65,8 +65,8 @@ const MatchContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
     newGenres.splice(index, 1);
     setGenres(newGenres);
   };
-  const setRelaseYearHandler = (from: number, to: number) => {
-    setRelaseYear([from, to]);
+  const setRelaseYearHandler = (years : number[]) => {
+    setRelaseYear(years);
   };
   const setTagsHandler = (value: string) => {
     setTags((prev) => [...prev, value]);
@@ -78,8 +78,8 @@ const MatchContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
     setTags(newTags);
   };
 
-  const setVoteAverageHandler = (from: number, to: number) => {
-    setVoteAverage([from, to]);
+  const setVoteAverageHandler = (value : number[]) => {
+    setVoteAverage(value);
   };
 
   useEffect(() => {

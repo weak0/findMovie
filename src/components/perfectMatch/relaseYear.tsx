@@ -1,7 +1,9 @@
 import { Slider, Box, Typography, Button } from "@mui/material";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { matchContext } from "../store/PerfectMatchContext";
 
 const RelaseYear = () => {
+  const matchCtx = useContext(matchContext);
   const [value, setValue] = useState<number[]>([1950, 2023]);
   const [isActivated, setIsActivated] = useState<boolean>(true);
 
@@ -33,12 +35,14 @@ const RelaseYear = () => {
             width: "200px",
             mt: "1rem",
           }}
-          value={value}
+            value={matchCtx.relaseYear}
+
           valueLabelDisplay="auto"
           size="medium"
           min={1950}
           max={2023}
-          onChange={(event, newValue) => setValue(newValue as number[])}
+          onChange={(event, newValue) => {
+            matchCtx.setRelaseYearHandler(newValue as number[])}}
           marks={[
             { value: 1950, label: "1950" },
             { value: 2000, label: "2000" },
