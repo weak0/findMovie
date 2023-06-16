@@ -14,7 +14,7 @@ return (
 <>
 <NavBar/>
 <ProvidersFilter/>
-<Box sx={{display:'flex', gap:'1rem'}}>
+<Box sx={{display:'flex', gap:'1rem', justifyContent:{lg:'flex-end', md:'center'}, flexWrap:'wrap'}}>
 <SortBy/>
 <OriginCountry/>
 <WithGenres/>

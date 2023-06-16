@@ -3,6 +3,7 @@ import {options} from '../config/api.tsx';
 import {Box} from '@mui/material';
 import {MovieProviderInterface} from '../config/interfaces.tsx';
 
+
 const ProvidersFilter = () => {
   const [providers, setProviders] = useState<MovieProviderInterface[]>([])
   

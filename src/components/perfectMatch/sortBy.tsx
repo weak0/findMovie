@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import {
   FormControl,
   Radio,
@@ -7,23 +7,45 @@ import {
   FormControlLabel,
   Box,
 } from "@mui/material";
+import { matchContext } from "../store/PerfectMatchContext";
 
 const SortBy = () => {
-  const [sortBy, setSortBy] = useState<string>("popularity.desc");
+  const matchCtx = useContext(matchContext);
+
   const [isActivated, setIsActivated] = useState<boolean>(true);
   return (
-    <Box sx={{with:'max-content'}}>
-      <Button variant="contained" sx={{ width: "100%" }} onClick={() => setIsActivated(!isActivated)}>
+    <Box sx={{ with: "max-content", position: "relative" }}>
+      <Button
+        variant="contained"
+        sx={{ width: "242px" }}
+        onClick={() => setIsActivated(!isActivated)}
+      >
         Sort By
       </Button>
-      <FormControl  sx={{height:'300px', overflowY:'scroll', overflowX:'hidden', display: isActivated ? 'none':'flex' , flexDirection:'column', flexWrap:'nowrap',    '&::-webkit-scrollbar': {
-      width: '5px', // Adjust the height of the scrollbar
-    },
-    '&::-webkit-scrollbar-thumb': {
-      backgroundColor: '#555',
-      borderRadius: '5px', // Round the edges of the thumb
-    }}}>
-        <RadioGroup value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+      <FormControl
+        sx={{
+          position: "absolute",
+          top: "3rem",
+          height: "300px",
+          overflowY: "scroll",
+          overflowX: "hidden",
+          display: isActivated ? "none" : "flex",
+          flexDirection: "column",
+          flexWrap: "nowrap",
+          border: "1px solid #EFCA3C",
+          padding: "1rem",
+          zIndex: 1,
+          bgcolor: '#242424',
+          "&::-webkit-scrollbar": {
+            width: "5px", // Adjust the height of the scrollbar
+          },
+          "&::-webkit-scrollbar-thumb": {
+            backgroundColor: "#555",
+            borderRadius: "5px", // Round the edges of the thumb
+          },
+        }}
+      >
+        <RadioGroup value={matchCtx.sortby} onChange={(e) => matchCtx.setSortByHandler(e.target.value)}>
           <FormControlLabel
             value="popularity.desc"
             control={<Radio />}

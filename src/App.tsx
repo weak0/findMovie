@@ -8,6 +8,7 @@ import TopRated from './components/toprated';
 import Upcoming from './components/upcoming/index.tsx';
 import SearchMovie from './components/searchMovie/index.tsx';
 import PerfectMatch from './components/perfectMatch/index.tsx';
+import MatchContextProvider from './components/store/PerfectMatchContext.tsx';
 
 
 const theme = createTheme({
@@ -118,7 +119,7 @@ const router = createBrowserRouter([
   { path: '/', element: <HomePage /> },
   { path: '/movie/:id', element: <Movie/> },
   { path: '/search/:query', element: <SearchMovie/> },
-  { path: '/perfectMatch', element: <PerfectMatch/> },
+  { path: '/perfectMatch', element: <MatchContextProvider><PerfectMatch/></MatchContextProvider> },
 ])
 
 function App() {
