@@ -1,9 +1,9 @@
 import { createContext, useState, useEffect } from "react";
 
 export const matchContext = createContext({
-  provider: [] as string[],
-  setProviderHandler: (value: string) => {},
-  removeProviderHandler: (value: string) => {},
+  provider: [] as number[],
+  setProviderHandler: (value: number) => {},
+  removeProviderHandler: (value: number) => {},
   sortby: "popularity.desc",
   setSortByHandler: (value: string) => {},
   countrys: [] as string[],
@@ -24,7 +24,7 @@ export const matchContext = createContext({
 import { FC, ReactNode } from "react";
 
 const MatchContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const [provider, setProvider] = useState<string[]>([]);
+  const [provider, setProvider] = useState<number[]>([]);
   const [sortby, setSortBy] = useState("popularity.desc");
   const [countrys, setCountry] = useState<string[]>([]);
   const [genres, setGenres] = useState<string[]>([]);
@@ -32,10 +32,10 @@ const MatchContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [tags, setTags] = useState<string[]>([]);
   const [voteAverage, setVoteAverage] = useState<number[]>([0, 10]);
 
-  const setProviderHandler = (value: string) => {
+  const setProviderHandler = (value: number) => {
     setProvider((prev) => [...prev, value]);
   };
-  const removeProviderHandler = (value: string) => {
+  const removeProviderHandler = (value: number) => {
     const index = provider.findIndex((el) => el === value);
     const newProvider = [...provider];
     newProvider.splice(index, 1);
