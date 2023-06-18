@@ -1,17 +1,17 @@
 import { createContext, useState, useEffect } from "react";
 
 export const matchContext = createContext({
-  provider: [] as number[],
-  setProviderHandler: (value: number) => {},
-  removeProviderHandler: (value: number) => {},
+  provider: [] as string[],
+  setProviderHandler: (value: string) => {},
+  removeProviderHandler: (value: string) => {},
   sortby: "popularity.desc",
   setSortByHandler: (value: string) => {},
   countrys: [] as string[],
   setCountryHandler: (value: string) => {},
   removeCountryHandler: (value: string) => {},
-  genres: [] as string[],
-  setGenresHandler: (value: string) => {},
-  removeGenresHandler: (value: string) => {},
+  genres: [] as number[],
+  setGenresHandler: (value: number) => {},
+  removeGenresHandler: (value: number) => {},
   relaseYear: [] as number[],
   setRelaseYearHandler: (value : number[]) => {},
   tags: [] as string[],
@@ -24,18 +24,18 @@ export const matchContext = createContext({
 import { FC, ReactNode } from "react";
 
 const MatchContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const [provider, setProvider] = useState<number[]>([]);
+  const [provider, setProvider] = useState<string[]>([]);
   const [sortby, setSortBy] = useState("popularity.desc");
   const [countrys, setCountry] = useState<string[]>([]);
-  const [genres, setGenres] = useState<string[]>([]);
+  const [genres, setGenres] = useState<number[]>([]);
   const [relaseYear, setRelaseYear] = useState<number[]>([1950,2023]);
   const [tags, setTags] = useState<string[]>([]);
   const [voteAverage, setVoteAverage] = useState<number[]>([0, 10]);
 
-  const setProviderHandler = (value: number) => {
+  const setProviderHandler = (value: string) => {
     setProvider((prev) => [...prev, value]);
   };
-  const removeProviderHandler = (value: number) => {
+  const removeProviderHandler = (value: string) => {
     const index = provider.findIndex((el) => el === value);
     const newProvider = [...provider];
     newProvider.splice(index, 1);
@@ -56,10 +56,10 @@ const MatchContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
     setCountry(newCountrys);
   };
 
-  const setGenresHandler = (value: string) => {
+  const setGenresHandler = (value: number) => {
     setGenres((prev) => [...prev, value]);
   };
-  const removeGenresHandler = (value: string) => {
+  const removeGenresHandler = (value: number) => {
     const index = genres.findIndex((el) => el === value);
     const newGenres = [...genres];
     newGenres.splice(index, 1);

@@ -1,10 +1,9 @@
-import { Slider, Box, Typography, Button } from "@mui/material";
+import { Slider, Box, Button } from "@mui/material";
 import { useState, useContext } from "react";
 import { matchContext } from "../store/PerfectMatchContext";
 
 const RelaseYear = () => {
   const matchCtx = useContext(matchContext);
-  const [value, setValue] = useState<number[]>([1950, 2023]);
   const [isActivated, setIsActivated] = useState<boolean>(true);
 
   return (

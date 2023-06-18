@@ -22,7 +22,8 @@ const WithGenres = () => {
   }, []);
 
   const handleGenresChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedGenres = event.target.value;
+    const selectedGenres = parseInt(event.target.value, 10);
+   
     if (event.target.checked) {
       matchCtx.setGenresHandler(selectedGenres);
     } else {
@@ -71,8 +72,8 @@ const WithGenres = () => {
             <FormControlLabel
               sx={{ width: "100%" }}
               key={genre.id}
-              control={<Checkbox value={genre.name}
-              checked={matchCtx.genres.includes(genre.name)}
+              control={<Checkbox value={genre.id}
+              checked={matchCtx.genres.includes(genre.id)}
               onChange={(e) => handleGenresChange(e)} />}
               label={genre.name}
   

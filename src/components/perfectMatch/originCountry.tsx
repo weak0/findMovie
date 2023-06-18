@@ -75,8 +75,8 @@ const OriginCountry = () => {
             key={country.iso_3166_1}
             control={
               <Checkbox
-                value={country.english_name}
-                checked={matchCtx.countrys.includes(country.english_name)}
+                value={country.iso_3166_1}
+                checked={matchCtx.countrys.includes(country.iso_3166_1)}
                 onChange={(e) => handleCountryChange(e)}
                 />
               }

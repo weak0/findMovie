@@ -17,11 +17,12 @@ const ProvidersFilter = () => {
   }, [])
 
   const providerHandler = (providerId: number) => {
-    if (matchCtx.provider.includes(providerId)) {
-      matchCtx.removeProviderHandler(providerId)
+    const providerToString = providerId.toString()
+    if (matchCtx.provider.includes(providerToString)) {
+      matchCtx.removeProviderHandler(providerToString)
     }
     else {
-      matchCtx.setProviderHandler(providerId)
+      matchCtx.setProviderHandler(providerToString)
     }
   }
 
@@ -52,7 +53,7 @@ const ProvidersFilter = () => {
             <IconButton key={provider.provider_id} onClick={() => providerHandler(provider.provider_id)}>
               <img
                 src={`https://image.tmdb.org/t/p/original/${provider.logo_path}`}
-                style={{ height: '50px', width: '50px', borderRadius: '50%', border:'2px solid yellow', filter: matchCtx.provider.length === 0 ?  'none' :!matchCtx.provider.includes(provider.provider_id) ? 'grayscale(100%)' : 'none' }}
+                style={{ height: '50px', width: '50px', borderRadius: '50%', border:'2px solid yellow', filter: matchCtx.provider.length === 0 ?  'none' :!matchCtx.provider.includes(provider.provider_id.toString()) ? 'grayscale(100%)' : 'none' }}
                 alt={provider.provider_name}
               />
             </IconButton>
