@@ -25,7 +25,7 @@ const Tags = () => {
 
 
   return (
-    <Box sx={{ position:'relative' }}>
+    <Box sx={{ position: 'relative' }}>
       <Button
         sx={{ width: "270px" }}
         onClick={() => setIsActivated(!isActivated)}
@@ -60,9 +60,9 @@ const Tags = () => {
           return (
             <FormControlLabel
               key={keyword}
-              control={<Checkbox value={keyword} 
-              checked={matchCtx.tags.includes(keyword)}
-              onChange={(e) => keywordsHandler(e)}
+              control={<Checkbox value={keyword}
+                checked={matchCtx.tags.includes(keyword)}
+                onChange={(e) => keywordsHandler(e)}
               />}
               label={keyword}
             />

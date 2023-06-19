@@ -3,7 +3,7 @@ import { MovieCuntryInterface } from "../config/interfaces";
 import { options } from "../config/api";
 import {
   Box,
-  Checkbox,
+  Radio,
   FormControlLabel,
   FormGroup,
   Button,
@@ -15,12 +15,10 @@ const OriginCountry = () => {
   const [countries, setCountries] = useState<MovieCuntryInterface[]>([]);
   const [isActivated, setIsActivated] = useState<boolean>(true);
 
-  const handleCountryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleCountryChange = (event : any) => {
     const selectedCountry = event.target.value;
     if (event.target.checked) {
       matchCtx.setCountryHandler(selectedCountry);
-    } else {
-      matchCtx.removeCountryHandler(selectedCountry);
     }
   };
 
@@ -34,13 +32,14 @@ const OriginCountry = () => {
       .catch((err) => console.error(err));
   }, []);
 
+
   if (!countries) {
     return <div>Loading...</div>;
   }
 
   return (
-    <Box sx={{position:'relative'}}>
-      <Button sx={{width:"200px"}}
+    <Box sx={{ position: 'relative' }}>
+      <Button sx={{ width: "200px" }}
         onClick={() => setIsActivated(!isActivated)}
         variant="contained"
       >
@@ -72,18 +71,16 @@ const OriginCountry = () => {
         {countries.map((country) => {
           return (
             <FormControlLabel
-            key={country.iso_3166_1}
-            control={
-              <Checkbox
-                value={country.iso_3166_1}
-                checked={matchCtx.countrys.includes(country.iso_3166_1)}
-                onChange={(e) => handleCountryChange(e)}
-                />
-              }
+              key={country.iso_3166_1}
+              control={<Radio />}
+              value={country.iso_3166_1}
+              checked={matchCtx.country.includes(country.iso_3166_1)}
+              onChange={(e) => handleCountryChange(e)}
               label={country.english_name}
-              />
+            />
           );
         })}
+
       </FormGroup>
     </Box>
   );

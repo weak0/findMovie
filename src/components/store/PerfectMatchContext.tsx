@@ -1,24 +1,23 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState} from "react";
 
 export const matchContext = createContext({
   provider: [] as string[],
-  setProviderHandler: (value: string) => {},
-  removeProviderHandler: (value: string) => {},
+  setProviderHandler: (value: string) => { value},
+  removeProviderHandler: (value: string) => { value},
   sortby: "popularity.desc",
-  setSortByHandler: (value: string) => {},
-  countrys: [] as string[],
-  setCountryHandler: (value: string) => {},
-  removeCountryHandler: (value: string) => {},
+  setSortByHandler: (value: string) => { value},
+  country: '',
+  setCountryHandler: (value: string) => { value},
   genres: [] as number[],
-  setGenresHandler: (value: number) => {},
-  removeGenresHandler: (value: number) => {},
+  setGenresHandler: (value: number) => { value},
+  removeGenresHandler: (value: number) => { value},
   relaseYear: [] as number[],
-  setRelaseYearHandler: (value : number[]) => {},
+  setRelaseYearHandler: (value: number[]) => { value},
   tags: [] as string[],
-  setTagsHandler: (value: string) => {},
-  removeTagsHandler: (value: string) => {},
+  setTagsHandler: (value: string) => { value},
+  removeTagsHandler: (value: string) => { value},
   voteAverage: [] as number[],
-  setVoteAverageHandler: (value: number[]) => {},
+  setVoteAverageHandler: (value: number[]) => { value},
 });
 
 import { FC, ReactNode } from "react";
@@ -26,7 +25,7 @@ import { FC, ReactNode } from "react";
 const MatchContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [provider, setProvider] = useState<string[]>([]);
   const [sortby, setSortBy] = useState("popularity.desc");
-  const [countrys, setCountry] = useState<string[]>([]);
+  const [country, setCountry] = useState("");
   const [genres, setGenres] = useState<number[]>([]);
   const [relaseYear, setRelaseYear] = useState<number[]>([1950,2023]);
   const [tags, setTags] = useState<string[]>([]);
@@ -47,15 +46,8 @@ const MatchContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
   };
 
   const setCountryHandler = (value: string) => {
-    setCountry((prev) => [...prev, value]);
+    setCountry(value);
   };
-  const removeCountryHandler = (value: string) => {
-    const index = countrys.findIndex((el) => el === value);
-    const newCountrys = [...countrys];
-    newCountrys.splice(index, 1);
-    setCountry(newCountrys);
-  };
-
   const setGenresHandler = (value: number) => {
     setGenres((prev) => [...prev, value]);
   };
@@ -82,16 +74,6 @@ const MatchContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
     setVoteAverage(value);
   };
 
-  useEffect(() => {
-    console.log("provider", provider);
-    console.log("sortby", sortby);
-    console.log("countrys", countrys);
-    console.log("genres", genres);
-    console.log("relaseYear", relaseYear);
-    console.log("tags", tags);
-    console.log("voteAverage", voteAverage);
-  }, [provider, sortby, countrys, genres, relaseYear, tags, voteAverage]);
-
   return (
     <matchContext.Provider
       value={{
@@ -100,9 +82,8 @@ const MatchContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
         removeProviderHandler,
         sortby,
         setSortByHandler,
-        countrys,
+        country,
         setCountryHandler,
-        removeCountryHandler,
         genres,
         setGenresHandler,
         removeGenresHandler,

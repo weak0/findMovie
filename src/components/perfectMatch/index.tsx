@@ -6,7 +6,7 @@ import WithGenres from "./withGenres";
 import { Box, Button } from "@mui/material";
 import VoteAvg from "./vote_average";
 import SortBy from "./sortBy";
-import Tags from "./tags";
+// import Tags from "./tags";
 import { matchContext } from "../store/PerfectMatchContext";
 import { useContext, useEffect, useState } from "react";
 import { options } from "../config/api";
@@ -21,16 +21,17 @@ const PerfectMatch = () => {
 
   const handleRequest = () => {
     setIsLoading(true);
-fetch(
-  `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}`+
-  `&sort_by=${matchCtx.sortby}`+
-  `&vote_average.gte=${matchCtx.voteAverage[0]}`+
-  `&vote_average.lte=${matchCtx.voteAverage[1]}`+
-  `${matchCtx.genres.length !== 0 ? `&with_genres=${matchCtx.genres.join(",")}` : ""}`+
-  `${matchCtx.relaseYear.length !== 0 ? `&primary_release_date.gte=${matchCtx.relaseYear[0]}-01-01&primary_release_date.lte=${matchCtx.relaseYear[1]}-12-31` : ""}`+
-  `${matchCtx.countrys.length !== 0 ? `&with_original_language=${matchCtx.countrys.join(",")}` : ""}`+
-  `${matchCtx.tags.length !== 0 ? `&with_keywords=${matchCtx.tags.join(",")}` : ""}`+
-  `${matchCtx.provider.length !== 0 ? `&with_watch_providers=${matchCtx.provider.join(",")}` : ""}`, options)
+    fetch(
+      `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}` +
+      `&sort_by=${matchCtx.sortby}` +
+      `&vote_average.gte=${matchCtx.voteAverage[0]}` +
+      `&vote_average.lte=${matchCtx.voteAverage[1]}` +
+      `&watch_region=PL` +
+      `${matchCtx.genres.length !== 0 ? `&with_genres=${matchCtx.genres.join(",")}` : ""}` +
+      `${matchCtx.relaseYear.length !== 0 ? `&primary_release_date.gte=${matchCtx.relaseYear[0]}-01-01&primary_release_date.lte=${matchCtx.relaseYear[1]}-12-31` : ""}` +
+      `${matchCtx.country.length !== 0 ? `&with_origin_country=${matchCtx.country}` : ""}` +
+      // `${matchCtx.tags.length !== 0 ? `&with_keywords=${matchCtx.tags.join(",")}` : ""}`+
+      `${matchCtx.provider.length !== 0 ? `&with_watch_providers=${matchCtx.provider.join(",")}` : ""}`, options)
       .then((response) => response.json())
       .then((response) => {
         setMovies(response.results);
@@ -60,7 +61,7 @@ fetch(
         <OriginCountry />
         <WithGenres />
         <RelaseYear />
-        <Tags />
+        {/* <Tags /> */}
         <VoteAvg />
         <Button variant="outlined" onClick={handleRequest}>
           Search

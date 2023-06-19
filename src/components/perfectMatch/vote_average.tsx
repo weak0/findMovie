@@ -37,7 +37,9 @@ const VateAvg = () => {
             step={0.1}
             min={0}
             max={10}
-            onChange={(event, newValue) => matchCtx.setVoteAverageHandler(newValue as number[])}
+            onChange={(event, newValue) =>{
+              event.preventDefault(),
+               matchCtx.setVoteAverageHandler(newValue as number[])}}
             marks={[
               { value: 0, label: "0" },
               { value: 10, label: "10" },

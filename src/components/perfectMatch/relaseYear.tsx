@@ -41,6 +41,7 @@ const RelaseYear = () => {
           min={1950}
           max={2023}
           onChange={(event, newValue) => {
+            event.preventDefault();
             matchCtx.setRelaseYearHandler(newValue as number[])}}
           marks={[
             { value: 1950, label: "1950" },
