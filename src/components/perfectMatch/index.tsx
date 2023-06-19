@@ -3,7 +3,7 @@ import OriginCountry from "./originCountry";
 import ProvidersFilter from "./providers";
 import RelaseYear from "./relaseYear";
 import WithGenres from "./withGenres";
-import { Box, Button } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import VoteAvg from "./vote_average";
 import SortBy from "./sortBy";
 // import Tags from "./tags";
@@ -67,8 +67,16 @@ const PerfectMatch = () => {
           Search
         </Button>
       </Box>
-      <Box sx={{ display: "flex", justifyContent: "flex-end" }}></Box>
-      <Box sx={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
+      <Box sx={{ display: "flex", mt:'1rem', alignItems:'center', }}>
+        <Typography sx={{mr:'1rem'}} variant="h3">Searching Options:</Typography>
+       { matchCtx.country.length > 0 && <Typography sx={{mr:'1rem', bgcolor:'#555', padding:'5px 1rem', borderRadius:'1rem'}} >Origin Country: {matchCtx.country}</Typography>}
+        {matchCtx.provider.length > 0 && <Typography sx={{mr:'1rem', bgcolor:'#555', padding:'5px 1rem', borderRadius:'1rem'}}>Providers: {matchCtx.provider}</Typography>}
+        <Typography sx={{mr:'1rem', bgcolor:'#555', padding:'5px 1rem', borderRadius:'1rem'}} >Relase years: {matchCtx.relaseYear.join('-')}</Typography>
+        <Typography sx={{mr:'1rem', bgcolor:'#555', padding:'5px 1rem', borderRadius:'1rem'}}>Sort by: {matchCtx.sortby}</Typography>
+        <Typography sx={{mr:'1rem', bgcolor:'#555', padding:'5px 1rem', borderRadius:'1rem'}}>Vote average: {matchCtx.voteAverage.join('-')}</Typography>
+       {matchCtx.genres.length > 0 && <Typography sx={{mr:'1rem', bgcolor:'#555', padding:'5px 1rem', borderRadius:'1rem'}}>Genres: {matchCtx.genres.join(', ')}</Typography>}
+      </Box>
+      <Box sx={{ display: "flex", flexWrap: "wrap", gap: "1rem", mt:'1rem', justifyContent:'center' }}>
         {!isLoading &&
           movies.length !== 0 &&
           movies.map((movie) => {
