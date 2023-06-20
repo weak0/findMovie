@@ -7,9 +7,9 @@ const RelaseYear = () => {
   const [isActivated, setIsActivated] = useState<boolean>(true);
 
   return (
-    <Box sx={{ position: "relative" }}>
+    <Box sx={{ position: "relative", width:{xs: '100%', sm:'fit-content'} }}>
       <Button
-        sx={{ width: "242px" }}
+        sx={{ width: {xs: '100%', sm:"242px" }}}
         onClick={() => setIsActivated(!isActivated)}
         variant="contained"
       >
@@ -24,7 +24,7 @@ const RelaseYear = () => {
           padding: "1rem 20px",
           border: "1px solid #EFCA3C",
           borderRadius: "15px",
-          zIndex: 1,
+          zIndex: 999,
           bgcolor: '#242424',
         }}
       >

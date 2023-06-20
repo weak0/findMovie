@@ -36,9 +36,9 @@ const WithGenres = () => {
   }
 
   return (
-    <Box sx={{position:'relative'}}>
+    <Box sx={{position:'relative', width:{xs: '100%', sm:'fit-content'}}}>
       <Button
-        sx={{ width: "155px" }}
+        sx={{ width: { xs:'100%', sm:"155px"} }}
         onClick={() => setIsActivated(!isActivated)}
         variant="contained"
       >
@@ -56,7 +56,7 @@ const WithGenres = () => {
           flexWrap: "nowrap",
           border: "1px solid #EFCA3C",
           padding: "1rem",
-          zIndex: 1,
+          zIndex: 999,
           bgcolor: '#242424',
           "&::-webkit-scrollbar": {
             width: "5px", // Adjust the height of the scrollbar

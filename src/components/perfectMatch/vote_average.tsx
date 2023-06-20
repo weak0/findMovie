@@ -8,11 +8,11 @@ const VateAvg = () => {
 
   return (
     <>
-      <Box sx={{ position: "relative" }}>
+      <Box sx={{ position: "relative", width:{xs: '100%', sm:'fit-content'} }}>
         <Button
           onClick={() => setIsActivated(!isActivated)}
           variant="contained"
-          sx={{ width: "192px" }}
+          sx={{ width:{xs: '100%', sm:'164px'} }}
         >
           Rate
         </Button>
@@ -25,7 +25,7 @@ const VateAvg = () => {
             padding: "1rem 20px",
             border: "1px solid #EFCA3C",
             borderRadius: "15px",
-            zIndex: 1,
+            zIndex: 999,
             bgcolor: '#242424',
           }}
         >

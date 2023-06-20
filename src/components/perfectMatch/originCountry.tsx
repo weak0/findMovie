@@ -38,8 +38,8 @@ const OriginCountry = () => {
   }
 
   return (
-    <Box sx={{ position: 'relative' }}>
-      <Button sx={{ width: "200px" }}
+    <Box sx={{ position: 'relative', width:{xs:'100%', sm:'fit-content'} }}>
+      <Button sx={{ width: {xs:'100%', md:"200px"} }}
         onClick={() => setIsActivated(!isActivated)}
         variant="contained"
       >
@@ -57,14 +57,14 @@ const OriginCountry = () => {
           flexWrap: "nowrap",
           border: "1px solid #EFCA3C",
           padding: "1rem",
-          zIndex: 1,
+          zIndex: 99,
           bgcolor: '#242424',
           "&::-webkit-scrollbar": {
-            width: "5px", // Adjust the height of the scrollbar
+            width: "5px", 
           },
           "&::-webkit-scrollbar-thumb": {
             backgroundColor: "#555",
-            borderRadius: "5px", // Round the edges of the thumb
+            borderRadius: "5px",
           },
         }}
       >

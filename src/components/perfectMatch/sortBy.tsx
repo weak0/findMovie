@@ -14,10 +14,10 @@ const SortBy = () => {
 
   const [isActivated, setIsActivated] = useState<boolean>(true);
   return (
-    <Box sx={{ with: "max-content", position: "relative" }}>
+    <Box sx={{ with: "max-content", position: "relative", width:{xs: '100%', sm:'fit-content'} }}>
       <Button
         variant="contained"
-        sx={{ width: "242px" }}
+        sx={{ width:{xs:'100%', sm:"242px"} }}
         onClick={() => setIsActivated(!isActivated)}
       >
         Sort By
@@ -34,7 +34,7 @@ const SortBy = () => {
           flexWrap: "nowrap",
           border: "1px solid #EFCA3C",
           padding: "1rem",
-          zIndex: 1,
+          zIndex: 999,
           bgcolor: '#242424',
           "&::-webkit-scrollbar": {
             width: "5px", // Adjust the height of the scrollbar
