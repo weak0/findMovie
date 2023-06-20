@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
 import { NavBar } from '../navbar'
 import { MovieInterface } from '../config/interfaces'
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { options } from '../config/api'
 import { Box, Button, Typography, Grid } from '@mui/material'
+import MovieComponent from '../../assets/movieListComponent/movieComoponent'
 
 const SearchMovie = () => {
   const { query } = useParams<{ query: string }>()
@@ -35,11 +36,7 @@ const SearchMovie = () => {
           return (
             movie.poster_path && (
                 <Grid item xs={12} sm={4} md={3}  lg={2} xl={1.5} sx={{  overflow: 'hidden',p:'1rem'}} key={movie.id}>
-                <Link to={`/movie/${movie.id}`} >
-                <Box sx={{border: '1px solid #555', boxShadow: '0px 0px 5px 3px black', height: '100%', width: '100%', transition: 'transform 0.3s', '&:hover': { transform: 'scale(1.1)' }}}>
-                    <img src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`} alt={movie.title} style={{ height: '100%', width: '100%' }} />
-                  </Box>
-              </Link>
+                  <MovieComponent movie={movie} />
                   </Grid>
             )
           )
