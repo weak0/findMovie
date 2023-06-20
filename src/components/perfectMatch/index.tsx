@@ -19,46 +19,47 @@ const PerfectMatch = () => {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
 
-  useEffect(() => {
-    const handleRequest = () => {
-      setIsLoading(true);
-      fetch(
-        `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}` +
-          `&sort_by=${matchCtx.sortby}` +
-          `&vote_average.gte=${matchCtx.voteAverage[0]}` +
-          `&vote_average.lte=${matchCtx.voteAverage[1]}` +
-          `&watch_region=PL` +
-          `${
-            matchCtx.genres.length !== 0
-              ? `&with_genres=${matchCtx.genres.join(',')}`
-              : ''
-          }` +
-          `${
-            matchCtx.relaseYear.length !== 0
-              ? `&primary_release_date.gte=${matchCtx.relaseYear[0]}-01-01&primary_release_date.lte=${matchCtx.relaseYear[1]}-12-31`
-              : ''
-          }` +
-          `${
-            matchCtx.country.length !== 0
-              ? `&with_origin_country=${matchCtx.country}`
-              : ''
-          }` +
-          `${
-            matchCtx.provider.length !== 0
-              ? `&with_watch_providers=${matchCtx.provider.join(',')}`
-              : ''
-          }`,
-        options
-      )
-        .then((response) => response.json())
-        .then((response) => {
-          setMovies(response.results);
-          setTotalPages(response.total_pages);
-          setIsLoading(false);
-        })
-        .catch((err) => console.error(err));
-    };
+  const handleRequest = () => {
+    setIsLoading(true);
+    fetch(
+      `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}` +
+        `&sort_by=${matchCtx.sortby}` +
+        `&vote_average.gte=${matchCtx.voteAverage[0]}` +
+        `&vote_average.lte=${matchCtx.voteAverage[1]}` +
+        `&watch_region=PL` +
+        `${
+          matchCtx.genres.length !== 0
+            ? `&with_genres=${matchCtx.genres.join(',')}`
+            : ''
+        }` +
+        `${
+          matchCtx.relaseYear.length !== 0
+            ? `&primary_release_date.gte=${matchCtx.relaseYear[0]}-01-01&primary_release_date.lte=${matchCtx.relaseYear[1]}-12-31`
+            : ''
+        }` +
+        `${
+          matchCtx.country.length !== 0
+            ? `&with_origin_country=${matchCtx.country}`
+            : ''
+        }` +
+        `${
+          matchCtx.provider.length !== 0
+            ? `&with_watch_providers=${matchCtx.provider.join(',')}`
+            : ''
+        }`,
+      options
+    )
+      .then((response) => response.json())
+      .then((response) => {
+        setMovies(response.results);
+        setTotalPages(response.total_pages);
+        setIsLoading(false);
+      })
+      .catch((err) => console.error(err));
+  };
 
+
+  useEffect(() => {
     handleRequest();
   }, [page]);
 
@@ -95,7 +96,7 @@ const PerfectMatch = () => {
         <Button
           variant="outlined"
           sx={styles.button}
-          onClick={() => setPage(1)}
+          onClick={() => handleRequest()}
         >
           Search
         </Button>
