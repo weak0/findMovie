@@ -16,7 +16,7 @@ const Search = () => {
   return (
     <Box sx={{ flexGrow: { xs: 1, sm: 0 } }} >
       <form onSubmit={handleSubmit}>
-        <FormControl sx={{ width: { xs: '100%', sm: '50vw' }, display: 'flex', justifyContent: 'center' }}>
+        <FormControl sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
           <TextField label="Search..." value={search} onChange={(e) => setSearch(e.target.value)} />
         </FormControl>
       </form>
