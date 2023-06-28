@@ -1,4 +1,4 @@
-import { Box, Typography, Grid } from '@mui/material'
+import { Typography, Grid } from '@mui/material'
 import Search from './search'
 import { Link } from 'react-router-dom'
 
