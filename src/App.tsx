@@ -9,6 +9,7 @@ import Upcoming from './components/upcoming/index.tsx';
 import SearchMovie from './components/searchMovie/index.tsx';
 import PerfectMatch from './components/perfectMatch/index.tsx';
 import MatchContextProvider from './components/store/PerfectMatchContext.tsx';
+import Auth from './components/authentication/index.tsx';
 
 
 const theme = createTheme({
@@ -120,6 +121,7 @@ const router = createBrowserRouter([
   { path: '/movie/:id', element: <Movie/> },
   { path: '/search/:query', element: <SearchMovie/> },
   { path: '/perfectMatch', element: <MatchContextProvider><PerfectMatch/></MatchContextProvider> },
+  { path: '/auth', element: <Auth/> },
 ])
 
 function App() {

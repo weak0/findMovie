@@ -3,7 +3,7 @@
   line-height: 1.5;
   font-weight: 400;
   font-size: 12px;
-
+  box-sizing: content-box;
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
@@ -61,4 +61,15 @@ button:focus-visible {
   :root {
     font-size: 14px;
   }
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  line-height: 1.15; /* 1 */
+  margin: 0; /* 2 */
 }
