@@ -128,7 +128,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Box sx={{
-        p: {xs: '1rem' ,sm:'2rem'},
+        p: {xs: '1rem 1rem 1rem 1rem' ,sm:' 2rem 2rem 2rem 2rem'},
       }}>    
         <RouterProvider router={router}/>
         </Box>
