@@ -11,10 +11,6 @@ import PerfectMatch from './components/perfectMatch/index.tsx';
 import MatchContextProvider from './components/store/PerfectMatchContext.tsx';
 import Auth from './components/authentication/index.tsx';
 
-
-type color = "blue";
-var color = "blue";
-
 const theme = createTheme({
   palette: {
     primary: {
